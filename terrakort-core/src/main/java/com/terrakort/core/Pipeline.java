@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.Map;
 
 public final class Pipeline {
     private final List<GenerationStep> steps = new ArrayList<>();
@@ -25,17 +26,6 @@ public final class Pipeline {
 
     public List<GenerationStep> steps() {
         return List.copyOf(steps);
-    }
-
-    public MapContext generate(int width, int height, long seed) {
-        MapContext ctx = new MapContext(width, height, seed);
-        for (GenerationStep step : ordered()) {
-            // Each step gets its own random stream, so adding a plugin
-            // doesn't change what the other steps generate.
-            Random rng = new Random(seed ^ step.id().hashCode() * 0x9E3779B97F4A7C15L);
-            step.apply(ctx, rng);
-        }
-        return ctx;
     }
 
     private List<GenerationStep> ordered() {
@@ -55,5 +45,18 @@ public final class Pipeline {
             available.addAll(next.produces());
         }
         return result;
+    }
+
+    public MapContext generate(int width, int height, long seed) {
+        return generate(width, height, seed, Map.of());
+    }
+
+    public MapContext generate(int width, int height, long seed, Map<String, Double> params) {
+        MapContext ctx = new MapContext(width, height, seed, params);
+        for (GenerationStep step : ordered()) {
+            Random rng = new Random(seed ^ step.id().hashCode() * 0x9E3779B97F4A7C15L);
+            step.apply(ctx, rng);
+        }
+        return ctx;
     }
 }
