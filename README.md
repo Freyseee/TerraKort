@@ -58,22 +58,22 @@ These options are shown in the panel of the right side of the screen. Click the 
 
 >**Map Size**
 >
->>Fit to Window
+>>Fit to Window: 
 >>Check to override the width and height to fit your screen :)
 >
->>Width and Height
+>>Width and Height: 
 >>Can be used to manually choose the height and width of the maps area
 >
 >---
 
->Noise
+>**Noise**
 >
->>Feature Size
+>>Feature Size: 
 >>How much the land area should be broken up. Left means many islands, right means minimal islands
 >
->>Detail
+>>Detail: 
 >> To the left it results in very simple round shapes. To the right you add more detail meaning more complex shapes
 >
->>Island Falloff
+>>Island Falloff: 
 >>Determines how close to the edge the map will be generated. To the left it can generate on the whole area. To the right it just creates a landmass in the middle
 
