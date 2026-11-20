@@ -8,7 +8,7 @@ Inside each release is a Zip folder. Each release describes how to run it and an
 This section will expand as I add more features! The features listed will be the ones present in the current newest release
 
 ### Generating a map
-When generating a map, any edits made with brushes, etc. are not saved. 
+When generating a map, any edits made with brushes, etc. are not saved. This is because when you press Generate or Random, it overrides the current map.
 
 
 >**Seed**
